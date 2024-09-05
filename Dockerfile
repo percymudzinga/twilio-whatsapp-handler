@@ -19,7 +19,7 @@ RUN npm run build
 RUN npx prisma generate
 
 # Step 7: Expose the port your application will run on (optional, based on your app)
-EXPOSE 3000
+EXPOSE 8080
 
 # Step 8: Define environment variables (optional)
 # For example, you could define NODE_ENV as either "production" or "development"
