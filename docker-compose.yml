@@ -5,7 +5,7 @@ services:
     container_name: whatsapp_service
     command: npm run start
     ports:
-      - "8080:8080"
+      - "2970:8080"
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
@@ -17,4 +17,4 @@ services:
     restart: always
     container_name: editor_service
     ports:
-      - "8081:80"
+      - "2971:80"
