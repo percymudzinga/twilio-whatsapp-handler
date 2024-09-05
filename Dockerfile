@@ -8,11 +8,15 @@ COPY package*.json ./
 # Step 4: Install dependencies
 RUN npm install
 
+RUN npm install -g prisma
+
 # Step 5: Copy the rest of the application code
 COPY . .
 
 # Step 6: Build the TypeScript code (for production)
 RUN npm run build
+
+RUN npx prisma generate
 
 # Step 7: Expose the port your application will run on (optional, based on your app)
 EXPOSE 3000
