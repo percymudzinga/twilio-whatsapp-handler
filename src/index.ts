@@ -148,6 +148,8 @@ const receivedMessage = async (
     Parameters: JSON.stringify(params),
   };
 
+  console.log(requestBody);
+
   await prisma.message.create({
     data: {
       from: fromNumber,
@@ -202,11 +204,12 @@ const sendNotification = async (data: any) => {
       "Content-Type": "application/json", // Set the Content-Type header
     },
   };
-  await axios.post(
+  var response = await axios.post(
     `${process.env.APP_BASE_URL}/api/sendNotification`,
     data,
     config
   );
+  console.log(response.data);
 };
 
 const subtractDateTimeInMinutes = (date1: Date, date2: Date): number => {
