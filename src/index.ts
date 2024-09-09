@@ -48,6 +48,7 @@ app.post("/mobile-chat", async (req, res) => {
 app.post("/send-whatsapp-message", async (req, res) => {
   try {
     const { to, message, step, isFinal } = req.body;
+    console.log(req.body);
     const toNumber = extractPhoneNumber(to);
     const savedMessage = await prisma.message.findFirst({
       where: {
@@ -77,6 +78,7 @@ app.post("/send-whatsapp-message", async (req, res) => {
         },
       });
     } else {
+      console.log("sending message");
       const data = { message, phoneNumber: toNumber };
       await sendNotification(data);
       await prisma.message.create({
