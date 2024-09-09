@@ -203,6 +203,7 @@ const sendMessageToFlow = async (data: {
 };
 
 const sendNotification = async (data: any) => {
+  console.log("Log in function", data);
   const config: AxiosRequestConfig = {
     headers: {
       "Content-Type": "application/json", // Set the Content-Type header
