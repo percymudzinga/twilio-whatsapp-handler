@@ -10,6 +10,8 @@ services:
       - .:/usr/src/app
       - /usr/src/app/node_modules
       - /usr/src/app/dist
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   editor_service:
     build:
