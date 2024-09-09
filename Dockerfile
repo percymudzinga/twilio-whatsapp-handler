@@ -28,4 +28,4 @@ ENV NODE_ENV=production
 # Step 9: Default command (use npm scripts based on the environment)
 # For production, use the `start` script
 # For development, you might want to override this command to use `dev`
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "deploy"]
