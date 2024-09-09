@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import qs from "qs";
 import { PrismaClient } from "@prisma/client";
 import { MessageSource } from "./constants";
@@ -200,14 +200,17 @@ const sendMessageToFlow = async (data: {
   }
 };
 
-const sendNotification = async (data: {
-  message: string;
-  phoneNumber: string;
-}) => {
+const sendNotification = async (data: any) => {
   console.log(data);
+  const config: AxiosRequestConfig = {
+    headers: {
+      "Content-Type": "application/json", // Set the Content-Type header
+    },
+  };
   var response = await axios.post(
     `${process.env.APP_BASE_URL}/api/sendNotification`,
-    data
+    data,
+    config
   );
   console.log(response.data);
 };
