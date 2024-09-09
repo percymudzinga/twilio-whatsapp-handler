@@ -4,7 +4,6 @@ WORKDIR /usr/src/app
 
 # Step 3: Copy the package.json and package-lock.json (if available)
 COPY package*.json ./
-COPY prisma ./prisma/
 
 # Step 4: Install dependencies
 RUN npm install
@@ -29,4 +28,4 @@ ENV NODE_ENV=production
 # Step 9: Default command (use npm scripts based on the environment)
 # For production, use the `start` script
 # For development, you might want to override this command to use `dev`
-CMD ["npm", "run", "deploy"]
+CMD ["npm", "run", "start"]

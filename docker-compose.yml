@@ -3,7 +3,7 @@ services:
     build: .
     restart: always
     container_name: whatsapp_service
-    command: npm run deploy
+    command: npm run start
     ports:
       - "2970:8080"
     volumes:
