@@ -48,7 +48,6 @@ app.post("/mobile-chat", async (req, res) => {
 app.post("/send-whatsapp-message", async (req, res) => {
   try {
     const { to, message, step, isFinal } = req.body;
-    console.log(req.body);
     const toNumber = extractPhoneNumber(to);
     const savedMessage = await prisma.message.findFirst({
       where: {
@@ -78,7 +77,6 @@ app.post("/send-whatsapp-message", async (req, res) => {
         },
       });
     } else {
-      console.log("sending message");
       const data = { message, phoneNumber: toNumber };
       await sendNotification(data);
       await prisma.message.create({
@@ -92,7 +90,6 @@ app.post("/send-whatsapp-message", async (req, res) => {
           source: MessageSource.mobile,
         },
       });
-      console.log("message sent");
     }
 
     res.status(200).send("Message sent");
@@ -207,12 +204,11 @@ const sendNotification = async (data: any) => {
       "Content-Type": "application/json", // Set the Content-Type header
     },
   };
-  var response = await axios.post(
+  await axios.post(
     `${process.env.APP_BASE_URL}/api/sendNotification`,
     data,
     config
   );
-  console.log(response.data);
 };
 
 const subtractDateTimeInMinutes = (date1: Date, date2: Date): number => {
