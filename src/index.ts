@@ -80,6 +80,17 @@ app.post("/send-whatsapp-message", async (req, res) => {
     } else {
       console.log("sending message");
       await sendNotification({ message, phoneNumber: toNumber });
+      await prisma.message.create({
+        data: {
+          from: whatsappNumber!,
+          to: toNumber,
+          message,
+          messageSid: "",
+          step,
+          isFinal: isFinal ? isFinal : false,
+          source: MessageSource.mobile,
+        },
+      });
       console.log("message sent");
     }
 
@@ -193,6 +204,7 @@ const sendNotification = async (data: {
   message: string;
   phoneNumber: string;
 }) => {
+  console.log(data);
   var response = await axios.post(
     `${process.env.APP_BASE_URL}/api/sendNotification`,
     data
