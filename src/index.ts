@@ -193,7 +193,11 @@ const sendNotification = async (data: {
   message: string;
   phoneNumber: string;
 }) => {
-  await axios.post(`${process.env.APP_BASE_URL}/api/sendNotification`, data);
+  var response = await axios.post(
+    `${process.env.APP_BASE_URL}/api/sendNotification`,
+    data
+  );
+  console.log(response.data);
 };
 
 const subtractDateTimeInMinutes = (date1: Date, date2: Date): number => {
