@@ -79,7 +79,9 @@ app.post("/send-whatsapp-message", async (req, res) => {
       });
     } else {
       console.log("sending message");
-      await sendNotification({ message, phoneNumber: toNumber });
+      const data = { message, phoneNumber: toNumber };
+      console.log("Data before sending", data);
+      await sendNotification(data);
       await prisma.message.create({
         data: {
           from: whatsappNumber!,
