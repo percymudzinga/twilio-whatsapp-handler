@@ -148,8 +148,6 @@ const receivedMessage = async (
     Parameters: JSON.stringify(params),
   };
 
-  console.log(requestBody);
-
   await prisma.message.create({
     data: {
       from: fromNumber,
