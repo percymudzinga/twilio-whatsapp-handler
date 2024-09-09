@@ -202,17 +202,17 @@ const sendMessageToFlow = async (data: {
 
 const sendNotification = async (data: any) => {
   console.log(data);
-  const config: AxiosRequestConfig = {
-    headers: {
-      "Content-Type": "application/json", // Set the Content-Type header
-    },
-  };
-  var response = await axios.post(
-    `${process.env.APP_BASE_URL}/api/sendNotification`,
-    data,
-    config
-  );
-  console.log(response.data);
+  // const config: AxiosRequestConfig = {
+  //   headers: {
+  //     "Content-Type": "application/json", // Set the Content-Type header
+  //   },
+  // };
+  // var response = await axios.post(
+  //   `${process.env.APP_BASE_URL}/api/sendNotification`,
+  //   data,
+  //   config
+  // );
+  // console.log(response.data);
 };
 
 const subtractDateTimeInMinutes = (date1: Date, date2: Date): number => {
